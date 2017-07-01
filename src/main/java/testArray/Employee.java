@@ -2,10 +2,12 @@ package testArray;
 
 import java.util.*;
 
+import static java.util.Arrays.*;
+
 /**
  * Created by Gleb on 27.06.17.
  */
-public class Employee implements Comparable<Employee>, Comparator<Employee> {
+public class Employee /*implements Comparable<Employee>*/ {
 
     private String name;
     private int age;
@@ -22,35 +24,26 @@ public class Employee implements Comparable<Employee>, Comparator<Employee> {
     @Override
     public String toString() {
 
-        return "name" + ": " + name + " " + "age" + ": " + age + " " + "salary" + ": " + salary;
+        return "name" + ": " + name + " " + "age" + ": " + age + " " + "salary" + ": " + salary + "\n";
     }
 
-    @Override
+    /*@Override
     public int compareTo(Employee employee) {
         return this.name.compareTo(employee.name);
-    }
+    }*/
 
-    @Override
-    public int compare(Employee o1, Employee o2) {
-        return 0;
-    }
+    public static class EmployeeByAgeComparator implements Comparator<Employee> {
 
-    public static class comparatorTo implements Comparator<Employee> {
         @Override
         public int compare(Employee employee1, Employee employee2) {
-            Integer age1 = new Integer(employee1.age);
-            Integer age2 = new Integer(employee2.age);
-            return age1.compareTo(age2);
+            if (employee1.age - employee2.age > 0) return 1;
+            if (employee1.age - employee2.age < 0) return -1;
+            return employee1.name.compareTo(employee2.name);
         }
-
-        void anonim (){
-
-        }
-
     }
 
     public static void main(String[] args) {
-        List<Employee> employees = new ArrayList<Employee>();
+        List<Employee> employees = new ArrayList<>();
 
         Employee employee1 = new Employee("Gleb", 19, 5000);
         Employee employee2 = new Employee("Vasy", 25, 10000);
@@ -59,8 +52,8 @@ public class Employee implements Comparable<Employee>, Comparator<Employee> {
         Employee employee5 = new Employee("Sergey", 28, 9000);
         Employee employee6 = new Employee("Djon", 21, 5000);
         Employee employee7 = new Employee("Valentin", 22, 7000);
-        Employee employee8 = new Employee("Igor", 24, 8000);
-        Employee employee9 = new Employee("Anton", 20, 8000);
+        Employee employee8 = new Employee("Igor", 22, 8000);
+        Employee employee9 = new Employee("Anton", 22, 8000);
         Employee employee10 = new Employee("Andrey", 18, 9000);
 
         employees.add(employee1);
@@ -74,13 +67,40 @@ public class Employee implements Comparable<Employee>, Comparator<Employee> {
         employees.add(employee9);
         employees.add(employee10);
 
-        Collections.sort(employees);
+        List<Employee> employees2 = asList(
+                new Employee("Andrey", 18, 9000),
+                employee2
+        );
 
-        System.out.println(employees.toString());
+        System.out.println(employees);
 
-        Collections.sort(employees, new comparatorTo());
+//        Collections.sort(employees);
 
-        System.out.println(employees.toString());
+        System.out.println(employees);
 
+        Collections.sort(employees, new EmployeeByAgeComparator());
+
+        System.out.println(employees);
+
+        Collections.sort(employees, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.salary - o2.salary;
+            }
+        });
+
+        System.out.println(employees);
+
+        /*
+            class A implements Comparator<Employee> {
+
+                @Override
+                public int compare(Employee o1, Employee o2) {
+                    return 0;
+                }
+            }
+
+            Collections.sort(employees, new A());
+        */
     }
 }
