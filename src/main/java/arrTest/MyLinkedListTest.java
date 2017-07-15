@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class MyLinkedListTest {
 
     @Before
     public void setUp() throws Exception {
-        list = new MyLinkedList<>();
+        list = new LikedListTest<>();
         for (int i = 0; i < 5; i++) {
             list.add("A");
         }
@@ -30,4 +31,12 @@ public class MyLinkedListTest {
         assertEquals(elem, "A");
     }
 
+    @Test
+    public void test() throws Exception {
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String next = iterator.next();
+            System.out.println(next);
+        }
+    }
 }

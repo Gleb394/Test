@@ -5,49 +5,33 @@ import java.util.*;
 /**
  * Created by Gleb on 24.06.17.
  */
-public class LikedListTest<E> implements List {
+public class LikedListTest<T> implements List<T> {
     private int size = 0;
 
-    private Node<E> first;
-    private Node<E> last;
+    private Node<T> first;
+    private Node<T> last;
 
+    public LikedListTest() {
+        first = new Node<>(null, null, null);
+        last = new Node<>(null, null, null);
 
-    public static class Node<E> {
+        first.next = last;
+        last.prev = first;
+    }
 
-        E item;
-        Node<E> next;
-        Node<E> prev;
+    public static class Node<T> {
 
-        public Node(Node<E> prev, E element, Node<E> next) {
+        T item;
+        Node<T> next;
+        Node<T> prev;
+
+        public Node(Node<T> prev, T element, Node<T> next) {
             this.prev = prev;
             this.item = element;
             this.next = next;
         }
 
-
-
     }
-
-    public void likdFirst(E e){
-        Node<E> first = this.first;
-        Node<E> newNode = new Node<>(null, e, first);
-        if(first == null)
-                this.last = newNode;
-            else
-                first.prev = newNode;
-          size++;
-    }
-
-    public void likdLast(E e){
-        Node<E> last = this.last;
-        Node<E> newNode = new Node<>(last, e, null);
-        if(last == null)
-            this.first = newNode;
-        else
-            first.next = newNode;
-        size++;
-    }
-
 
     @Override
     public int size() {
@@ -75,6 +59,11 @@ public class LikedListTest<E> implements List {
     }
 
     @Override
+    public <T1> T1[] toArray(T1[] a) {
+        return null;
+    }
+
+    @Override
     public boolean add(Object o) {
         return false;
     }
@@ -85,12 +74,27 @@ public class LikedListTest<E> implements List {
     }
 
     @Override
-    public boolean addAll(Collection c) {
+    public boolean containsAll(Collection<?> c) {
         return false;
     }
 
     @Override
-    public boolean addAll(int index, Collection c) {
+    public boolean addAll(Collection<? extends T> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends T> c) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
         return false;
     }
 
@@ -100,22 +104,22 @@ public class LikedListTest<E> implements List {
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         return null;
     }
 
     @Override
-    public Object set(int index, Object element) {
+    public T set(int index, T element) {
         return null;
     }
 
     @Override
-    public void add(int index, Object element) {
+    public void add(int index, T element) {
 
     }
 
     @Override
-    public Object remove(int index) {
+    public T remove(int index) {
         return null;
     }
 
@@ -130,37 +134,18 @@ public class LikedListTest<E> implements List {
     }
 
     @Override
-    public ListIterator listIterator() {
+    public ListIterator<T> listIterator() {
         return null;
     }
 
     @Override
-    public ListIterator listIterator(int index) {
+    public ListIterator<T> listIterator(int index) {
         return null;
     }
 
     @Override
-    public List subList(int fromIndex, int toIndex) {
+    public List<T> subList(int fromIndex, int toIndex) {
         return null;
     }
 
-    @Override
-    public boolean retainAll(Collection c) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection c) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(Collection c) {
-        return false;
-    }
-
-    @Override
-    public Object[] toArray(Object[] a) {
-        return new Object[0];
-    }
 }
