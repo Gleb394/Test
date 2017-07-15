@@ -17,14 +17,15 @@ public class StringArray {
     public Map<String, Integer> wordsCount() {
         Map<String, Integer> hashMap = new HashMap<>();
         String[] words = text.split(" ");
-        for (int i = 0 ; i < words.length; i++) {
+        for (int i = 0; i < words.length; i++) {
             if (!hashMap.containsKey(words[i])) {
-                  hashMap.put(words[i], 1);
-            } else hashMap.put(words[i], hashMap.get(words[i]) + 1);
+                hashMap.put(words[i], 1);
+            } else {
+                hashMap.replace(words[i], hashMap.get(words[i]) + 1);
+            }
         }
-        return  hashMap;
+        return hashMap;
     }
-
 
 
     public static void main(String[] args) {

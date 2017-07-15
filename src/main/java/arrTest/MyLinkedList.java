@@ -1,7 +1,5 @@
 package arrTest;
 
-import org.junit.Test;
-
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -10,120 +8,151 @@ import java.util.ListIterator;
 /**
  * Created by Gleb on 24.06.17.
  */
-public class MyLinkedList<T> implements List<T>{
+public class MyLinkedList<E> implements List<E> {
 
-  @Override
-  public int size() {
-    return 0;
-  }
+    private Node<E> first;
+    private Node<E> last;
 
-  @Override
-  public boolean isEmpty() {
-    return false;
-  }
+    private int size;
 
-  @Override
-  public boolean contains(Object o) {
-    return false;
-  }
+    public MyLinkedList() {
+        first = new Node<>(null, null, null);
+        last = new Node<>(null, null, null);
+    }
 
-  @Override
-  public Iterator<T> iterator() {
-    return null;
-  }
+    private static class Node<E> {
+        E item;
+        Node<E> next;
+        Node<E> prev;
 
-  @Override
-  public Object[] toArray() {
-    return new Object[0];
-  }
+        Node(Node<E> prev, E element, Node<E> next) {
+            this.item = element;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
 
-  @Override
-  public <T1> T1[] toArray(T1[] a) {
-    return null;
-  }
+    @Override
+    public boolean add(E e) {
+        Node<E> node;
+        if (size == 0) {
+            node = new Node<>(first, e, last);
+            first.next = node;
+            last.prev = node;
+        } else {
+            node = new Node<>(null, e, last);
+        }
 
-  @Override
-  public boolean add(T t) {
-    return false;
-  }
+        return false;
+    }
 
-  @Override
-  public boolean remove(Object o) {
-    return false;
-  }
+    @Override
+    public int size() {
+        return 0;
+    }
 
-  @Override
-  public boolean containsAll(Collection<?> c) {
-    return false;
-  }
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
 
-  @Override
-  public boolean addAll(Collection<? extends T> c) {
-    return false;
-  }
+    @Override
+    public boolean contains(Object o) {
+        return false;
+    }
 
-  @Override
-  public boolean addAll(int index, Collection<? extends T> c) {
-    return false;
-  }
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
 
-  @Override
-  public boolean removeAll(Collection<?> c) {
-    return false;
-  }
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
 
-  @Override
-  public boolean retainAll(Collection<?> c) {
-    return false;
-  }
+    @Override
+    public <T1> T1[] toArray(T1[] a) {
+        return null;
+    }
 
-  @Override
-  public void clear() {
+    @Override
+    public boolean remove(Object o) {
+        return false;
+    }
 
-  }
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return false;
+    }
 
-  @Override
-  public T get(int index) {
-    return null;
-  }
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        return false;
+    }
 
-  @Override
-  public T set(int index, T element) {
-    return null;
-  }
+    @Override
+    public boolean addAll(int index, Collection<? extends E> c) {
+        return false;
+    }
 
-  @Override
-  public void add(int index, T element) {
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
 
-  }
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return false;
+    }
 
-  @Override
-  public T remove(int index) {
-    return null;
-  }
+    @Override
+    public void clear() {
 
-  @Override
-  public int indexOf(Object o) {
-    return 0;
-  }
+    }
 
-  @Override
-  public int lastIndexOf(Object o) {
-    return 0;
-  }
+    @Override
+    public E get(int index) {
+        return null;
+    }
 
-  @Override
-  public ListIterator<T> listIterator() {
-    return null;
-  }
+    @Override
+    public E set(int index, E element) {
+        return null;
+    }
 
-  @Override
-  public ListIterator<T> listIterator(int index) {
-    return null;
-  }
+    @Override
+    public void add(int index, E element) {
 
-  @Override
-  public List<T> subList(int fromIndex, int toIndex) {
-    return null;
-  }
+    }
+
+    @Override
+    public E remove(int index) {
+        return null;
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public ListIterator<E> listIterator() {
+        return null;
+    }
+
+    @Override
+    public ListIterator<E> listIterator(int index) {
+        return null;
+    }
+
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+        return null;
+    }
 }
