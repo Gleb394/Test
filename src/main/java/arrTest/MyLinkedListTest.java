@@ -25,18 +25,18 @@ public class MyLinkedListTest {
         }
     }
 
-    @Test
+   /* @Test
     public void contains() throws Exception {
         String elem = list.get(3);
         assertEquals(elem, "A");
-    }
+    }*/
 
-    @Test
+   /* @Test
     public void test() throws Exception {
         Iterator<String> iterator = list.iterator();
         while (iterator.hasNext()) {
             String next = iterator.next();
             System.out.println(next);
         }
-    }
+    }*/
 }

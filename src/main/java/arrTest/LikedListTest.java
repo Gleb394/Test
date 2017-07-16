@@ -19,20 +19,6 @@ public class LikedListTest<T> implements List<T> {
         last.prev = first;
     }
 
-    public static class Node<T> {
-
-        T item;
-        Node<T> next;
-        Node<T> prev;
-
-        public Node(Node<T> prev, T element, Node<T> next) {
-            this.prev = prev;
-            this.item = element;
-            this.next = next;
-        }
-
-    }
-
     @Override
     public int size() {
         return 0;
@@ -49,7 +35,7 @@ public class LikedListTest<T> implements List<T> {
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return null;
     }
 
@@ -64,8 +50,44 @@ public class LikedListTest<T> implements List<T> {
     }
 
     @Override
-    public boolean add(Object o) {
-        return false;
+    public boolean add(T t) {
+
+        Node<T> newNode = new Node<>(first, t, last);
+
+        if(newNode.item == null){
+            newNode.prev = first;
+            newNode.next = last;
+        }else {
+            newNode.next = new Node<>(newNode.prev, t, newNode.next);
+            newNode.prev = last;
+        }
+        size++;
+        return true;
+    }
+
+    public class myIterator<T> implements Iterator<T>{
+
+        int cour = 0;
+
+        @Override
+        public boolean hasNext() {
+            if (cour == size) return true;
+            return false;
+        }
+
+        @Override
+        public T next() {
+            Node<T> courrs;
+
+
+
+            return null;
+        }
+
+        @Override
+        public void remove() {
+
+        }
     }
 
     @Override
@@ -146,6 +168,20 @@ public class LikedListTest<T> implements List<T> {
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
         return null;
+    }
+
+    public static class Node<T> {
+
+        T item;
+        Node<T> next;
+        Node<T> prev;
+
+        public Node(Node<T> prev, T element, Node<T> next) {
+            this.prev = prev;
+            this.item = element;
+            this.next = next;
+        }
+
     }
 
 }

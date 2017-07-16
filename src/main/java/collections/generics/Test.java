@@ -81,7 +81,7 @@ public class Test {
         GPair<String, Integer> gPair = new GPair<>("1", 1);
         Integer value = gPair.getValue();
 
-        GPair<? super Number, Integer> giiPair = new GPair<>(1.0, 1);
+        /*GPair<? super Number, Integer> giiPair = new GPair<>(1.0, 1);*/
     }
 
     static <T> void print(T elem, int count) {
