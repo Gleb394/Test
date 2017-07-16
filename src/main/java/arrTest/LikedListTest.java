@@ -50,35 +50,36 @@ public class LikedListTest<T> implements List<T> {
     }
 
     @Override
-    public boolean add(T t) {
+    public boolean add(T elem) {
 
-        Node<T> newNode = new Node<>(first, t, last);
+        Node<T> newNode;
 
-        if(newNode.item == null){
-            newNode.prev = first;
-            newNode.next = last;
-        }else {
-            newNode.next = new Node<>(newNode.prev, t, newNode.next);
-            newNode.prev = last;
+        if (size == 0) {
+            newNode = new Node<>(first.next, elem, last.prev);
+            first.next = newNode;
+            last.prev = newNode;
+        } else {
+            newNode = new Node<>(last.prev, elem, last);
+            last.prev = newNode;
+            newNode.prev.next = newNode;
         }
         size++;
         return true;
     }
 
-    public class myIterator<T> implements Iterator<T>{
+    public class MyIterator<T> implements Iterator<T> {
 
         int cour = 0;
 
         @Override
         public boolean hasNext() {
-            if (cour == size) return true;
-            return false;
+            if (cour == size) return false;
+            return true;
         }
 
         @Override
         public T next() {
             Node<T> courrs;
-
 
 
             return null;
@@ -127,7 +128,13 @@ public class LikedListTest<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        return null;
+        if (index >= size) throw new IndexOutOfBoundsException();
+        Iterator<T> iterator = iterator();
+        T item = null;
+        for (int i = 0; i < index; i++) {
+            item = iterator.next();
+        }
+        return item;
     }
 
     @Override
