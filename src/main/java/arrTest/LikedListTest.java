@@ -21,7 +21,7 @@ public class LikedListTest<T> implements List<T> {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
@@ -135,8 +135,7 @@ public class LikedListTest<T> implements List<T> {
     @Override
     public T get(int index) {
         if (index >= size) throw new IndexOutOfBoundsException();
-        Node<T> node = (Node<T>) fouIndex(index);
-        return node.item;
+        return getNodeByIndex(index).item;
     }
 
     @Override
@@ -148,10 +147,10 @@ public class LikedListTest<T> implements List<T> {
     public void add(int index, T elem) {
         if (index >= size) throw new IndexOutOfBoundsException();
         size++;
-        Node<T> indexNode = new Node<> (last.prev, elem, last);
-        Node<T> node = (Node<T>) fouIndex(index);
-        last.prev = node.prev.next;
-        last = node.prev;
+        Node<T> node = getNodeByIndex(index);
+        Node<T> newNode = new Node<> (node.prev, elem, node);
+        node.prev.next = node;
+        node.prev = newNode;
     }
 
     @Override
@@ -184,12 +183,12 @@ public class LikedListTest<T> implements List<T> {
         return null;
     }
 
-    public T fouIndex (int index){
+    public Node<T> getNodeByIndex(int index){
         Node<T> newNode = first.next;
         for (int i = 0; i < index; i++) {
             newNode = newNode.next;
         }
-        return (T) newNode;
+        return newNode;
     }
 
     public static class Node<T> {

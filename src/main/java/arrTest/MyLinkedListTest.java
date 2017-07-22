@@ -15,35 +15,44 @@ import static org.junit.Assert.*;
  */
 public class MyLinkedListTest {
 
-    private List<String> list;
+    private List<Integer> list;
 
     @Before
     public void setUp() throws Exception {
         list = new LikedListTest<>();
         for (int i = 0; i < 5; i++) {
-            list.add("A");
+            list.add(i);
         }
-        /*list.add(3, "dd");*/
     }
 
     @Test
-    public void contains() throws Exception {
-        String elem = list.get(3);
-        assertEquals(elem, "A");
-    }
-
-
-
-    @Test
-    public void test() throws Exception {
-        Iterator<String> iterator = list.iterator();
+    public void iteratorTest() throws Exception {
+        Iterator<Integer> iterator = list.iterator();
         while (iterator.hasNext()) {
-            String next = iterator.next();
+            int next = iterator.next();
             System.out.println(next);
         }
     }
     @Test
-    public void get(){
-        System.out.println(list.get(3));
+    public void getTest(){
+        int first = list.get(1);
+        int third = list.get(3);
+        int fourth = list.get(4);
+        assertEquals(first, 1);
+        assertEquals(third, 3);
+        assertEquals(fourth, 4);
+    }
+
+    @Test
+    public void addByIndexTest(){
+        int index = 3;
+        int expected = 777;
+        list.add(index, expected);
+        int result = list.get(index);
+//        assertEquals(expected, result);
+        for (Integer integer : list) {
+            System.out.println(integer);
+        }
+        assertEquals(list.size(), 6);
     }
 }

@@ -13,7 +13,7 @@ public class Test {
         BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
         BufferedWriter out = new BufferedWriter(
                 new OutputStreamWriter(
-                        new FileOutputStream("C:\\Users\\Evgeniy\\IdeaProjects\\Test\\src\\main\\java\\io\\url\\index.html")
+                        new FileOutputStream("C:\\Users\\Evgeniy\\IdeaProjects\\ReflectionTest\\src\\main\\java\\io\\url\\index.html")
                 )
         );
         String inputLine;
