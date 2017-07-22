@@ -36,7 +36,8 @@ public class LikedListTest<T> implements List<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+
+        return new MyIterator();
     }
 
     @Override
@@ -67,9 +68,10 @@ public class LikedListTest<T> implements List<T> {
         return true;
     }
 
-    public class MyIterator<T> implements Iterator<T> {
+    public class MyIterator implements Iterator<T> {
 
         int cour = 0;
+        Node<T> currNode = first.next;
 
         @Override
         public boolean hasNext() {
@@ -79,10 +81,14 @@ public class LikedListTest<T> implements List<T> {
 
         @Override
         public T next() {
-            Node<T> courrs;
+            T item = currNode.item;
 
+            if (currNode != last) {
+                currNode = currNode.next;
+            }
+            cour++;
 
-            return null;
+            return item;
         }
 
         @Override
@@ -129,12 +135,8 @@ public class LikedListTest<T> implements List<T> {
     @Override
     public T get(int index) {
         if (index >= size) throw new IndexOutOfBoundsException();
-        Iterator<T> iterator = iterator();
-        T item = null;
-        for (int i = 0; i < index; i++) {
-            item = iterator.next();
-        }
-        return item;
+        Node<T> node = (Node<T>) fouIndex(index);
+        return node.item;
     }
 
     @Override
@@ -143,8 +145,13 @@ public class LikedListTest<T> implements List<T> {
     }
 
     @Override
-    public void add(int index, T element) {
-
+    public void add(int index, T elem) {
+        if (index >= size) throw new IndexOutOfBoundsException();
+        size++;
+        Node<T> indexNode = new Node<> (last.prev, elem, last);
+        Node<T> node = (Node<T>) fouIndex(index);
+        last.prev = node.prev.next;
+        last = node.prev;
     }
 
     @Override
@@ -175,6 +182,14 @@ public class LikedListTest<T> implements List<T> {
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
         return null;
+    }
+
+    public T fouIndex (int index){
+        Node<T> newNode = first.next;
+        for (int i = 0; i < index; i++) {
+            newNode = newNode.next;
+        }
+        return (T) newNode;
     }
 
     public static class Node<T> {

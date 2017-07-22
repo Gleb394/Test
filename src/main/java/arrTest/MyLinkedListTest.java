@@ -23,20 +23,27 @@ public class MyLinkedListTest {
         for (int i = 0; i < 5; i++) {
             list.add("A");
         }
+        /*list.add(3, "dd");*/
     }
 
-   /* @Test
+    @Test
     public void contains() throws Exception {
         String elem = list.get(3);
         assertEquals(elem, "A");
-    }*/
+    }
 
-   /* @Test
+
+
+    @Test
     public void test() throws Exception {
         Iterator<String> iterator = list.iterator();
         while (iterator.hasNext()) {
             String next = iterator.next();
             System.out.println(next);
         }
-    }*/
+    }
+    @Test
+    public void get(){
+        System.out.println(list.get(3));
+    }
 }
