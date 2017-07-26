@@ -41,6 +41,8 @@ public class MyLinkedListTest {
         assertEquals(first, 1);
         assertEquals(third, 3);
         assertEquals(fourth, 4);
+        list.remove(3);
+        assertEquals(third,3);
     }
 
     @Test

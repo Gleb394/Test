@@ -155,6 +155,13 @@ public class LikedListTest<T> implements List<T> {
 
     @Override
     public T remove(int index) {
+
+        Node<T> node = getNodeByIndex(index);
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+        node.next = node.prev = null;
+        node.item = null;
+        size--;
         return null;
     }
 
