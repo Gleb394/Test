@@ -9,11 +9,11 @@ import java.net.URL;
 public class Test {
     public static void main(String[] args) throws Exception {
 
-        URL oracle = new URL("http://shop.oreilly.com/product/9780596007126.do");
+        URL oracle = new URL("http://flangex.herokuapp.com/io/load");
         BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
         BufferedWriter out = new BufferedWriter(
                 new OutputStreamWriter(
-                        new FileOutputStream("C:\\Users\\Evgeniy\\IdeaProjects\\ReflectionTest\\src\\main\\java\\io\\url\\index.html")
+                        new FileOutputStream("src\\main\\java\\io\\url\\index.html")
                 )
         );
         String inputLine;

@@ -33,8 +33,9 @@ public class MyLinkedListTest {
             System.out.println(next);
         }
     }
+
     @Test
-    public void getTest(){
+    public void getTest() {
         int first = list.get(1);
         int third = list.get(3);
         int fourth = list.get(4);
@@ -42,11 +43,21 @@ public class MyLinkedListTest {
         assertEquals(third, 3);
         assertEquals(fourth, 4);
         list.remove(3);
-        assertEquals(third,3);
+        assertEquals(third, 3);
     }
 
     @Test
-    public void addByIndexTest(){
+    public void removeTest() {
+        Integer integer = list.get(3);
+        Integer remove = list.remove(3);
+        System.gc();
+        assertEquals(integer, remove);
+        assertNotEquals(integer, list.get(3));
+
+    }
+
+    @Test
+    public void addByIndexTest() {
         int index = 3;
         int expected = 777;
         list.add(index, expected);

@@ -148,21 +148,19 @@ public class LikedListTest<T> implements List<T> {
         if (index >= size) throw new IndexOutOfBoundsException();
         size++;
         Node<T> node = getNodeByIndex(index);
-        Node<T> newNode = new Node<> (node.prev, elem, node);
+        Node<T> newNode = new Node<>(node.prev, elem, node);
         node.prev.next = newNode; // was node.prev.next = newNode;
         node.prev = newNode;
     }
 
     @Override
     public T remove(int index) {
-
         Node<T> node = getNodeByIndex(index);
+        T item = node.item;
         node.prev.next = node.next;
         node.next.prev = node.prev;
-        node.next = node.prev = null;
-        node.item = null;
         size--;
-        return null;
+        return item;
     }
 
     @Override
@@ -190,7 +188,7 @@ public class LikedListTest<T> implements List<T> {
         return null;
     }
 
-    public Node<T> getNodeByIndex(int index){
+    public Node<T> getNodeByIndex(int index) {
         Node<T> newNode = first.next;
         for (int i = 0; i < index; i++) {
             newNode = newNode.next;
@@ -210,6 +208,10 @@ public class LikedListTest<T> implements List<T> {
             this.next = next;
         }
 
+        @Override
+        protected void finalize() throws Throwable {
+            System.out.println(item);
+        }
     }
 
 }
