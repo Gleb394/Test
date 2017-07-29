@@ -79,8 +79,7 @@ public class MyLinkedListTest {
     @Test
     public void indexOfTest(){
         list.add(3,54);
-        int result = list.get(3);
-       // assertEquals(list.indexOf(54), result);   // not work. Why?
-        System.out.println(list.indexOf(54));   //  work
+        int index = 3;
+        assertEquals(list.indexOf(54), index);
     }
 }
