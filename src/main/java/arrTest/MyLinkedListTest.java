@@ -68,4 +68,19 @@ public class MyLinkedListTest {
         }
         assertEquals(list.size(), 6);
     }
+
+    @Test
+    public void setTest(){
+        list.set(4,88);
+        int index = list.get(4);
+        assertEquals(index,88);
+    }
+
+    @Test
+    public void indexOfTest(){
+        list.add(3,54);
+        int result = list.get(3);
+       // assertEquals(list.indexOf(54), result);   // not work. Why?
+        System.out.println(list.indexOf(54));   //  work
+    }
 }

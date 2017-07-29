@@ -140,7 +140,7 @@ public class LikedListTest<T> implements List<T> {
 
     @Override
     public T set(int index, T element) {
-        return null;
+        return getNodeByIndex(index).item = element;
     }
 
     @Override
@@ -165,7 +165,13 @@ public class LikedListTest<T> implements List<T> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+
+        for (int i = 0; i <= size; i++) {
+            if (getNodeByIndex(i).item == o) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
