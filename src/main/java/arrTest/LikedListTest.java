@@ -149,7 +149,7 @@ public class LikedListTest<T> implements List<T> {
         size++;
         Node<T> node = getNodeByIndex(index);
         Node<T> newNode = new Node<>(node.prev, elem, node);
-        node.prev.next = newNode; // was node.prev.next = newNode;
+        node.prev.next = newNode;
         node.prev = newNode;
     }
 
@@ -176,7 +176,12 @@ public class LikedListTest<T> implements List<T> {
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        for (int i = size; i >= 0; i--) {
+            if (getNodeByIndex(i).item == o) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override

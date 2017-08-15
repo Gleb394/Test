@@ -16,6 +16,8 @@ import static org.junit.Assert.*;
 public class MyLinkedListTest {
 
     private List<Integer> list;
+    int intTest = 3;
+    int intTestTwo = 4;
 
     @Before
     public void setUp() throws Exception {
@@ -61,8 +63,6 @@ public class MyLinkedListTest {
         int index = 3;
         int expected = 777;
         list.add(index, expected);
-        int result = list.get(index);
-//        assertEquals(expected, result);
         for (Integer integer : list) {
             System.out.println(integer);
         }
@@ -82,4 +82,13 @@ public class MyLinkedListTest {
         int index = 3;
         assertEquals(list.indexOf(54), index);
     }
+
+    @Test
+    public void  lastIndexOfTest(){
+        list.add(4, 54);
+        int index = 4;
+        assertEquals(list.lastIndexOf(54), index);
+
+    }
 }
+
