@@ -37,7 +37,7 @@ public class Picture {
         reader.close();
         writer.close();*/
 
-        final Path downloadDirectory = Paths.get("/Users/imac/IdeaProjects/Test/downloadPictures/");
+        final Path downloadDirectory = Paths.get("C:\\Users\\Evgeniy\\Desktop\\");
         if (Files.notExists(downloadDirectory)) {
             Files.createDirectory(downloadDirectory);
         }
@@ -48,10 +48,10 @@ public class Picture {
         for (Element link : links) {
             final String urlImagePath = hostName + link.attr("href");
             final URL pageImageUrl = new URL(urlImagePath);
-            final String imageFileName = urlImagePath.substring( urlImagePath.lastIndexOf('/') + 1, urlImagePath.length() );
+            final String imageFileName = urlImagePath.substring(urlImagePath.lastIndexOf('/') + 1, urlImagePath.length());
             final BufferedImage image = ImageIO.read(pageImageUrl);
             final Path downloadFileName = downloadDirectory.resolve(imageFileName);
-            ImageIO.write(image, "png",downloadFileName.toFile());
+            ImageIO.write(image, "png", downloadFileName.toFile());
         }
 
         /*FileWriter writer1 = new FileWriter("src/main/java/downloadPicture/.png");*//*

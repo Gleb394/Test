@@ -50,9 +50,11 @@ public class FileRecursive {
         }
     }
     public static void main(String[] args) {
-        String path = "/Users/imac/IdeaProjects/Test/src/main/java/io/A";
+        String path = "C:\\Users\\Evgeniy\\IdeaProjects\\Test\\src\\main\\java\\io\\A";
         FileRecursive fileRecursive = new FileRecursive();
         fileRecursive.recDer(path);
+        fileRecursive.recFiles(path);
+        fileRecursive.recFilesDer(path);
         System.out.println();
 
     }
