@@ -14,7 +14,7 @@ public class Test {
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 2);
         server.createContext("/hello", httpExchange -> {
             String htmlString = Files
-                    .readAllLines(Paths.get("C:\\Users\\Evgeniy\\IdeaProjects\\Test\\src\\main\\java\\http\\index.html"))
+                    .readAllLines(Paths.get("/Users/imac/IdeaProjects/Test/src/main/java/http/index.html"))
                     .stream()
                     .collect(Collectors.joining());
             httpExchange.sendResponseHeaders(200, htmlString.length());

@@ -23,15 +23,15 @@ public class FileRecursive {
         }
     }
     public void recFiles(String path) {
-        File root = new File(path);
-        File[] list = root.listFiles();
+                File root = new File(path);
+                File[] list = root.listFiles();
 
-        if (list == null) return;
+                if (list == null) return;
 
-        for (File f : list) {
-            if (f.isDirectory()) {
-                recFiles(f.getAbsolutePath());
-            } else {
+                for (File f : list) {
+                    if (f.isDirectory()) {
+                        recFiles(f.getAbsolutePath());
+                    } else {
                 System.out.println(f.getName());
             }
         }
@@ -50,12 +50,11 @@ public class FileRecursive {
         }
     }
     public static void main(String[] args) {
-        String path = "C:\\Users\\Evgeniy\\IdeaProjects\\Test\\src\\main\\java\\io\\A";
+        String path = "/Users/imac/IdeaProjects/Test/src/main/java/io/A";
         FileRecursive fileRecursive = new FileRecursive();
         fileRecursive.recDer(path);
         fileRecursive.recFiles(path);
         fileRecursive.recFilesDer(path);
         System.out.println();
-
     }
 }
