@@ -79,7 +79,7 @@ public class FileQueue {
 
     public static void main(String[] args) {
         FileQueue fileQueue = new FileQueue(null);
-        String path = "/Users/imac/IdeaProjects/Test/src/main/java/io/A";
+        String path = "/Users/imac/IdeaProjects/PolyTest/src/main/java/io/A";
         fileQueue.queDer(path);
     }
 }

@@ -47,9 +47,9 @@ public class Test {
         server.createContext("/hello", new HelloHttpHandler()/* httpExchange -> {
             String htmlString = Files
 <<<<<<< Updated upstream
-                    .readAllLines(Paths.get("/Users/imac/IdeaProjects/Test/src/main/java/http/index.html"))
+                    .readAllLines(Paths.get("/Users/imac/IdeaProjects/PolyTest/src/main/java/http/index.html"))
 =======
-                    .readAllLines(Paths.get("C:\\Users\\Gleb\\IdeaProjects\\Test\\src\\main\\java\\http\\index.html"))
+                    .readAllLines(Paths.get("C:\\Users\\Gleb\\IdeaProjects\\PolyTest\\src\\main\\java\\http\\index.html"))
 >>>>>>> Stashed changes
                     .stream()
                     .collect(Collectors.joining());

@@ -9,10 +9,10 @@ public class SoundClipTest extends JFrame {
 
     public SoundClipTest() {
 
-        File f = new File("C:\\Users\\Evgeniy\\IdeaProjects\\Test\\src\\main\\java\\reflection\\Breezeblocks - Alt.mp3");
+        File f = new File("C:\\Users\\Evgeniy\\IdeaProjects\\PolyTest\\src\\main\\java\\reflection\\Breezeblocks - Alt.mp3");
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("Test Sound Clip");
+        this.setTitle("PolyTest Sound Clip");
         this.setSize(300, 200);
         this.setVisible(true);
 
